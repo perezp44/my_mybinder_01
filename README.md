@@ -3,7 +3,7 @@
 
 Este repo genera (a través de [MyBinder](https://mybinder.org/)) un entorno interactivo para trabajar 
 con **Quarto** y **RStudio** directamente en el navegador, 
-sin instalar nada localmente.
+sin instalar nada localmente
 
 ## ⚡ Lanzamiento rápido
 
@@ -16,5 +16,5 @@ Haz click en el siguiente botón: [![](https://mybinder.org/badge_logo.svg)](htt
 
 1.  Clica en el botón de **Launch Binder**
 2.  Espera a que el entorno se construya (la primera vez puede tardar unos minutos)
-3.  Una vez dentro de RStudio, abre `index.qmd`
+3.  Una vez dentro de RStudio, abre un archivo `.qmd`
 4.  Pulsa el botón **Render** para generar el documento final

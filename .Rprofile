@@ -1,10 +1,11 @@
 # 1. Limpiar la consola al arrancar
-cat("\014") 
-
-# 2. Mensaje de bienvenida personalizado (opcional)
-message("-- Entorno Quarto Preparado")
-
-# 3. Abrir index.qmd
-if (interactive() && file.exists("index.qmd")) {
-  utils::file.edit("index.qmd")
-}
+setHook("rstudio.sessionInit", function(newSession) {
+  Sys.sleep(0.5)        #- espera medio segundo
+  cat("\014")           #-  limpia la consola
+  message("--- Entorno Quarto Preparado ---")
+  
+  #- abrir automáticamente el archivo index.qmd
+  if (file.exists("index.qmd")) {
+    utils::file.edit("index.qmd")
+  }
+}, action = "append")
