@@ -17,6 +17,3 @@ mkdir -p /home/jovyan/.config/rstudio/
 # Copiamos el archivo (asegúrate de que rstudio-prefs.json esté en la raíz del repo)
 cp rstudio-prefs.json /home/jovyan/.config/rstudio/rstudio-prefs.json
 
-# Instalación de diccionarios para corregir el error de RStudio
-sudo apt-get update
-sudo apt-get install -y myspell-es
