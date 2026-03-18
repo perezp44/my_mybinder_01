@@ -1,0 +1,45 @@
+{
+    "save_workspace": "never",
+    "load_workspace": false,
+    "initial_working_directory": ".",
+    "always_save_history": false,
+    "default_encoding": "UTF-8",
+    "pdf_previewer": "none",
+    "posix_terminal_shell": "bash",
+    "editor_theme": "Tomorrow Night Blue",
+    "jobs_tab_visibility": "shown",
+    "highlight_r_function_calls": true,
+    "rainbow_parentheses": true,
+    "auto_append_newline": true,
+    "syntax_color_console": true,
+    "spelling_dictionary_language": "es_ES",
+    "source_with_echo": true,
+    "panes": {
+        "quadrants": [
+            "Source",
+            "Console",
+            "TabSet1",
+            "TabSet2"
+        ],
+        "tabSet1": [
+            "Environment",
+            "History",
+            "Connections",
+            "Build",
+            "VCS",
+            "Tutorial",
+            "Presentation"
+        ],
+        "tabSet2": [
+            "Files",
+            "Plots",
+            "Packages",
+            "Help",
+            "Viewer",
+            "Presentations"
+        ],
+        "console_left_on_top": false,
+        "console_right_on_top": true
+    },
+    "rmd_viewer_type": "pane"
+}
