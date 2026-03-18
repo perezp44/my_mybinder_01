@@ -3,7 +3,7 @@
     "path": "~/Escritorio/my_mybinder_01/README.md",
     "project_path": "README.md",
     "type": "markdown",
-    "hash": "0",
+    "hash": "2883803237",
     "contents": "",
     "dirty": false,
     "created": 1773870576515.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "16,42",
+        "cursorPosition": "9,165",
         "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1773871235,
+    "lastKnownWriteTime": 1773871694,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1773871235134,
+    "last_content_update": 1773871694986,
     "read_only": false,
     "read_only_alternatives": []
 }

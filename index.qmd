@@ -1,5 +1,6 @@
 ---
-title: "my_mybinder_01"
+title: "Mi primer documento con Quarto"
+format: html
 ---
 
 ## Quarto

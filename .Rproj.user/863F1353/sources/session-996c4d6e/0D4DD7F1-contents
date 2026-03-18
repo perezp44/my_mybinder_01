@@ -1,16 +1,23 @@
 # 1. Limpiar la consola al arrancar
-# Usamos el Hook para asegurar que RStudio está listo antes de pedirle nada
-setHook("rstudio.sessionInit", function(newSession) {
-  Sys.sleep(0.5) 
-  cat("\014")
-
-  # Usamos rstudioapi para abrir el archivo DENTRO del editor
+# Función para limpiar y abrir el archivo
+limpiar_y_abrir <- function() {
+  cat("\014") 
+  
+  # 3. Abrir index.qmd en el editor (no en ventana aparte)
   if (file.exists("index.qmd")) {
-    # Verificamos si la función está disponible (solo en RStudio)
     if (requireNamespace("rstudioapi", quietly = TRUE)) {
       rstudioapi::navigateToFile("index.qmd")
-    } else {
-      utils::file.edit("index.qmd")
     }
   }
+}
+
+# Ejecutamos la limpieza en dos momentos para asegurar el éxito:
+# A) Nada más cargar R
+limpiar_y_abrir()
+
+# B) Justo cuando la sesión de RStudio esté totalmente inicializada
+setHook("rstudio.sessionInit", function(newSession) {
+  # Esperamos un poco más (1 segundo) para que RStudio termine de soltar sus INFO
+  Sys.sleep(1.0) 
+  limpiar_y_abrir()
 }, action = "append")

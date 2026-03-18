@@ -7,7 +7,7 @@ sin instalar nada localmente
 
 ## ⚡ Lanzamiento rápido
 
-Haz click en el siguiente botón: [![](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/perezp44/my_mybinder_01/main?urlpath=rstudio)  
+Haz click en el siguiente botón: [![](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/perezp44/my_mybinder_01/main?urlpath=rstudio){target="_blank"} 
 (se abrirá una instancia de RStudio Server con todo configurado para usar Quarto)
 
 
