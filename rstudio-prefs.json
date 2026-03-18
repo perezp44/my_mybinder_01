@@ -1,7 +1,7 @@
 {
     "save_workspace": "never",
     "load_workspace": false,
-    "initial_working_directory": ".",
+    "initial_working_directory": "/home/jovyan",
     "always_save_history": false,
     "default_encoding": "UTF-8",
     "pdf_previewer": "none",

@@ -28,3 +28,6 @@ setHook("rstudio.sessionInit", function(newSession) {
   Sys.sleep(2.0)
   preparar_sesion()
 }, action = "append")
+
+
+rm(list = ls(all.names = TRUE, envir = .GlobalEnv), envir = .GlobalEnv)

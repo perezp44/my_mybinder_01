@@ -1,9 +1,9 @@
 {
     "id": "0D4DD7F1",
-    "path": "/home/pjpv/Escritorio/my_mybinder_01/.Rprofile",
+    "path": "~/Escritorio/my_mybinder_01/.Rprofile",
     "project_path": ".Rprofile",
     "type": "r_source",
-    "hash": "1752511030",
+    "hash": "0",
     "contents": "",
     "dirty": false,
     "created": 1773869843742.0,
@@ -13,15 +13,15 @@
         "tempName": "Untitled1",
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "11,2",
-        "scrollLine": "5"
+        "cursorPosition": "33,0",
+        "scrollLine": "12"
     },
     "folds": "",
-    "lastKnownWriteTime": 1773872530,
+    "lastKnownWriteTime": 1773874303,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1773872530319,
+    "last_content_update": 1773874303160,
     "read_only": false,
     "read_only_alternatives": []
 }
