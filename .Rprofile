@@ -1,33 +1,34 @@
-# Función maestra de limpieza y apertura
-preparar_sesion <- function() {
-  # 1. Limpiar consola (el comando \014 es el "Ctrl+L" interno)
-  cat("\014") 
-  
-  # 2. Intentar abrir el archivo index.qmd dentro del editor
-  if (file.exists("index.qmd") && requireNamespace("rstudioapi", quietly = TRUE)) {
-    if (rstudioapi::isAvailable()) {
-      rstudioapi::navigateToFile("index.qmd")
+# .Rprofile optimizado para MyBinder / RStudio Server
+
+if (interactive()) {
+  setHook("rstudio.sessionInit", function(newSession) {
+    
+    # Verificamos si rstudioapi está disponible
+    if (requireNamespace("rstudioapi", quietly = TRUE)) {
+      
+      # Usamos un pequeño retraso para que la interfaz gráfica termine de cargar
+      # Si tienes el paquete 'later' instalado, es lo ideal. 
+      # Si no, usamos un manejador de eventos del IDE.
+      
+      try({
+        # 1. Abrir el archivo index.qmd si existe
+        if (file.exists("index.qmd")) {
+          rstudioapi::navigateToFile("index.qmd")
+        }
+        
+        # 2. Limpiar la consola usando el comando interno del IDE
+        # (Esto es más efectivo que cat("\014") en sesiones web)
+        rstudioapi::executeCommand("consoleClear")
+        
+      }, silent = TRUE)
     }
-  }
-  
+  }, action = "append")
 }
 
-# REPETICIÓN ESTRATÉGICA:
-# Lo intentamos en el segundo 1, en el 3 y en el 5.
-# Así, no importa si Binder va lento, alguna de las veces funcionará.
-setHook("rstudio.sessionInit", function(newSession) {
-  # Intento 1 (Rápido)
-  Sys.sleep(1.0)
-  preparar_sesion()
-  
-  # Intento 2 (Seguridad)
-  Sys.sleep(2.0)
-  preparar_sesion()
-  
-  # Intento 3 (Por si Binder va muy lento)
-  Sys.sleep(2.0)
-  preparar_sesion()
-}, action = "append")
+# Limpieza silenciosa del entorno global al inicio
+if (exists(".GlobalEnv")) {
+  rm(list = ls(all.names = TRUE, envir = .GlobalEnv), envir = .GlobalEnv)
+}
 
-
-rm(list = ls(all.names = TRUE, envir = .GlobalEnv), envir = .GlobalEnv)
+# Mensaje discreto de confirmación en la consola (opcional)
+message("### Sesión de Binder preparada: index.qmd abierto ###")

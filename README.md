@@ -8,7 +8,6 @@ sin instalar nada localmente
 ## ⚡ Lanzamiento rápido
 
 Haz clic en el siguiente botón:
-
 <a href="https://mybinder.org/v2/gh/perezp44/my_mybinder_01/main?urlpath=rstudio" target="_blank">
   <img src="https://mybinder.org/badge_logo.svg" alt="Launch Binder">
 </a>
