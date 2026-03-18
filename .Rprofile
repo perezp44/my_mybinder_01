@@ -1,23 +1,30 @@
-# 1. Limpiar la consola al arrancar
-# Función para limpiar y abrir el archivo
-limpiar_y_abrir <- function() {
+# Función maestra de limpieza y apertura
+preparar_sesion <- function() {
+  # 1. Limpiar consola (el comando \014 es el "Ctrl+L" interno)
   cat("\014") 
   
-  # 3. Abrir index.qmd en el editor (no en ventana aparte)
-  if (file.exists("index.qmd")) {
-    if (requireNamespace("rstudioapi", quietly = TRUE)) {
+  # 2. Intentar abrir el archivo index.qmd dentro del editor
+  if (file.exists("index.qmd") && requireNamespace("rstudioapi", quietly = TRUE)) {
+    if (rstudioapi::isAvailable()) {
       rstudioapi::navigateToFile("index.qmd")
     }
   }
+  
 }
 
-# Ejecutamos la limpieza en dos momentos para asegurar el éxito:
-# A) Nada más cargar R
-limpiar_y_abrir()
-
-# B) Justo cuando la sesión de RStudio esté totalmente inicializada
+# REPETICIÓN ESTRATÉGICA:
+# Lo intentamos en el segundo 1, en el 3 y en el 5.
+# Así, no importa si Binder va lento, alguna de las veces funcionará.
 setHook("rstudio.sessionInit", function(newSession) {
-  # Esperamos un poco más (1 segundo) para que RStudio termine de soltar sus INFO
-  Sys.sleep(1.0) 
-  limpiar_y_abrir()
+  # Intento 1 (Rápido)
+  Sys.sleep(1.0)
+  preparar_sesion()
+  
+  # Intento 2 (Seguridad)
+  Sys.sleep(2.0)
+  preparar_sesion()
+  
+  # Intento 3 (Por si Binder va muy lento)
+  Sys.sleep(2.0)
+  preparar_sesion()
 }, action = "append")

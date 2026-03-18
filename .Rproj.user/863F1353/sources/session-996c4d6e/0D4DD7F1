@@ -3,7 +3,7 @@
     "path": "/home/pjpv/Escritorio/my_mybinder_01/.Rprofile",
     "project_path": ".Rprofile",
     "type": "r_source",
-    "hash": "3359472400",
+    "hash": "1752511030",
     "contents": "",
     "dirty": false,
     "created": 1773869843742.0,
@@ -13,15 +13,15 @@
         "tempName": "Untitled1",
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "4,2",
-        "scrollLine": "0"
+        "cursorPosition": "11,2",
+        "scrollLine": "5"
     },
     "folds": "",
-    "lastKnownWriteTime": 1773871802,
+    "lastKnownWriteTime": 1773872530,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1773871802628,
+    "last_content_update": 1773872530319,
     "read_only": false,
     "read_only_alternatives": []
 }
