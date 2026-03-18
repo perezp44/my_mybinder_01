@@ -17,3 +17,6 @@ mkdir -p /home/jovyan/.config/rstudio/
 # Copiamos el archivo (asegúrate de que rstudio-prefs.json esté en la raíz del repo)
 cp rstudio-prefs.json /home/jovyan/.config/rstudio/rstudio-prefs.json
 
+
+# Limpiar posibles carpetas de sistema mal ubicadas
+rm -rf quarto/ _extensions/ .quarto/

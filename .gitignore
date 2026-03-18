@@ -14,6 +14,11 @@
 *_files/
 *_cache/
 
+.quarto/
+_site/
+/quarto/
+
+
 # --- Extensiones de Quarto ---
 # Si prefieres instalarlas vía postBuild, puedes ignorar la carpeta local
 # _extensions/
