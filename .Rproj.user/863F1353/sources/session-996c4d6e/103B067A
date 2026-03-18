@@ -1,0 +1,27 @@
+{
+    "id": "103B067A",
+    "path": "~/Escritorio/my_mybinder_01/binder/install.R",
+    "project_path": "binder/install.R",
+    "type": "r_source",
+    "hash": "2699060026",
+    "contents": "",
+    "dirty": false,
+    "created": 1773866227571.0,
+    "source_on_save": false,
+    "relative_order": 2,
+    "properties": {
+        "tempName": "Untitled1",
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "1,0",
+        "scrollLine": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1773867116,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1773867116785,
+    "read_only": false,
+    "read_only_alternatives": []
+}
