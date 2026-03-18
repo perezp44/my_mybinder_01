@@ -20,3 +20,8 @@ cp rstudio-prefs.json /home/jovyan/.config/rstudio/rstudio-prefs.json
 
 # Limpiar posibles carpetas de sistema mal ubicadas
 rm -rf quarto/ _extensions/ .quarto/
+
+
+# Forzar la configuración del Shell para que RStudio detecte la Terminal
+export SHELL=/bin/bash
+echo "export SHELL=/bin/bash" >> ~/.bashrc
