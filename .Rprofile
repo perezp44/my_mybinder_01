@@ -2,8 +2,7 @@
 setHook("rstudio.sessionInit", function(newSession) {
   Sys.sleep(0.5)        #- espera medio segundo
   cat("\014")           #-  limpia la consola
-  message("--- Entorno Quarto Preparado ---")
-  
+
   #- abrir automáticamente el archivo index.qmd
   if (file.exists("index.qmd")) {
     utils::file.edit("index.qmd")

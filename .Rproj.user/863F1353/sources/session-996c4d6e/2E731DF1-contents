@@ -16,5 +16,4 @@ Haz click en el siguiente botón: [![](https://mybinder.org/badge_logo.svg)](htt
 
 1.  Clica en el botón de **Launch Binder**
 2.  Espera a que el entorno se construya (la primera vez puede tardar unos minutos)
-3.  Una vez dentro de RStudio, abre un archivo `.qmd`
-4.  Pulsa el botón **Render** para generar el documento final
+4.  Pulsa el botón **Render** para generar, a partir del archivo `index.qmd`, el documento final
