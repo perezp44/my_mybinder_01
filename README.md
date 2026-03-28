@@ -1,5 +1,5 @@
 
-# My proyecto Quarto en MyBinder
+### My proyecto Quarto en MyBinder
 
 Este repo genera (a través de [MyBinder](https://mybinder.org/)) un entorno interactivo para trabajar 
 con **Quarto** y **RStudio** directamente en el navegador, 
