@@ -1,12 +1,13 @@
 ---
 title: "Mi primer documento con Quarto"
-format: html
+format: html #- typst, pdf, odt, revealjs, beamer, epub, html
 ---
 
-## Quarto
+## Diferentes formatos de salida
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+Quarto permite generar documentos en varios formatos, como HTML, PDF, ODT, Reveal.js, Beamer, EPUB, Markdown y Jupyter. Puedes obtener más información sobre Quarto, [aquí](https://quarto.org)
+
 
 ```{r}
-1 + 1
+plot(mtcars)
 ```

@@ -1,0 +1,218 @@
+---
+title: " Algunos plots 🌍"
+subtitle: "Gapminder · World Cities"
+date: today
+format:
+  html:
+    theme: darkly
+    toc: true
+    toc-location: left
+    toc-title: "📋 Contenidos"
+    code-fold: true
+    code-summary: "Ver código"
+    page-layout: full
+    embed-resources: true
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+```{r setup}
+#| include: false
+library(plotly)
+library(leaflet)
+library(dplyr)
+library(gapminder) 
+```
+
+---
+
+## 📊 Gapminder — Esperanza de vida vs PIB per cápita
+
+El clásico gráfico de Hans Rosling, animado por año.  
+Datos reales del paquete **`gapminder`** (países 1952–2007)
+
+```{r}
+gapminder |>
+  plot_ly(
+    x          = ~gdpPercap,
+    y          = ~lifeExp,
+    size       = ~pop,
+    color      = ~continent,
+    frame      = ~year,
+    text       = ~country,
+    hoverinfo  = "text+x+y",
+    type       = "scatter",
+    mode       = "markers",
+    sizes      = c(10, 60),
+    marker     = list(opacity = 0.75, sizemode = "diameter",
+                      line = list(width = 0.5, color = "#ffffff33"))
+  ) |>
+  layout(
+    paper_bgcolor = "#0d1117",
+    plot_bgcolor  = "#161b22",
+    font          = list(color = "#c9d1d9", family = "monospace"),
+    title         = list(
+      text = "Riqueza vs Salud - Hans Rosling (1952 - 2007)",
+      font = list(size = 17, color = "#ffffff")
+    ),
+    xaxis = list(
+      type       = "log",
+      title      = "GDP per capita (log scale, USD)",
+      gridcolor  = "#21262d",
+      zerolinecolor = "#30363d"
+    ),
+    yaxis = list(
+      title     = "Life Expectancy (years)",
+      gridcolor = "#21262d",
+      zerolinecolor = "#30363d"
+    ),
+    legend = list(
+      bgcolor     = "#21262d",
+      bordercolor = "#30363d",
+      borderwidth = 1
+    )
+  ) |>
+  animation_opts(frame = 800, redraw = FALSE) |>
+  animation_button(label = "Reproducir")
+```
+
+---
+
+## 📈 Gapminder — Evolución de España, Japón y Nigeria
+
+Comparativa de esperanza de vida a lo largo del tiempo para tres países representativos.
+
+```{r tres-paises}
+paises <- c("Spain", "France", "Argentina")
+
+gapminder |>
+  filter(country %in% paises) |>
+  plot_ly(
+    x     = ~year,
+    y     = ~lifeExp,
+    color = ~country,
+    type  = "scatter",
+    mode  = "lines+markers",
+    colors = c("#00d4ff", "#ffd93d", "#ff6b6b"),
+    marker = list(size = 8),
+    line   = list(width = 3),
+    text   = ~paste0(country, " (", year, "): ", round(lifeExp, 1), " years"),
+    hoverinfo = "text"
+  ) |>
+  layout(
+    paper_bgcolor = "#0d1117",
+    plot_bgcolor  = "#161b22",
+    font          = list(color = "#c9d1d9", family = "monospace"),
+    title         = list(
+      text = "Esperanza de vida: Spain - Francia - Argentina",
+      font = list(size = 17, color = "#ffffff")
+    ),
+    xaxis = list(
+      title     = "Year",
+      gridcolor = "#21262d",
+      dtick     = 5
+    ),
+    yaxis = list(
+      title     = "Life Expectancy (years)",
+      gridcolor = "#21262d"
+    ),
+    legend = list(bgcolor = "#21262d", bordercolor = "#30363d", borderwidth = 1),
+    hovermode = "x unified"
+  )
+```
+
+---
+
+## 🔮 Gapminder 2007 — PIB per cápita por continente (boxplot)
+
+Distribución de riqueza en el último año disponible del dataset.
+
+```{r}
+gapminder |>
+  filter(year == 2007) |>
+  plot_ly(
+    x     = ~continent,
+    y     = ~gdpPercap,
+    color = ~continent,
+    type  = "box",
+    boxpoints = "all",
+    jitter    = 0.4,
+    pointpos  = 0,
+    text      = ~country,
+    hoverinfo = "text+y"
+  ) |>
+  layout(
+    paper_bgcolor = "#0d1117",
+    plot_bgcolor  = "#161b22",
+    font          = list(color = "#c9d1d9", family = "monospace"),
+    title         = list(
+      text = "GDP per capita by continent (2007)",
+      font = list(size = 17, color = "#ffffff")
+    ),
+    xaxis  = list(title = "Continent", gridcolor = "#21262d"),
+    yaxis  = list(title = "GDP per capita (USD)", gridcolor = "#21262d"),
+    showlegend = FALSE
+  )
+```
+
+-------------
+
+## 🌐 Mapa — Capitales del mundo (`maps::world.cities`)
+
+El paquete **`maps`** incluye una base de datos de ciudades con población estimada.  
+```{r leaflet-ciudades}
+library(maps)
+library(leaflet)
+library(dplyr)
+
+# 1. Filtramos TODAS las capitales nacionales
+top_ciudades <- world.cities |>
+  filter(capital == 1) |>  # En world.cities, 1 suele ser la capital nacional
+  arrange(desc(pop))
+  # Quitamos slice_head(n = 80) para que salgan todas
+
+# 2. Ajustamos la paleta para que funcione con todos los rangos de población
+pal2 <- colorNumeric(
+  palette = c("#00d4ff", "#0077ff", "#c700ff"),
+  domain  = log10(top_ciudades$pop)
+)
+
+# 3. Renderizamos el mapa
+leaflet(top_ciudades) |>
+  addProviderTiles(providers$CartoDB.DarkMatter) |>
+  addCircleMarkers(
+    lng    = ~long,
+    lat    = ~lat,
+    #- Ajustamos el radio para que no se amontonen tanto al ser muchas
+    radius = ~3 + (log10(pop) - min(log10(pop))) / (max(log10(pop)) - min(log10(pop))) * 10,
+    color  = ~pal2(log10(pop)),
+    fillOpacity = 0.7,
+    stroke = FALSE,
+    popup = ~paste0(
+      "<div style='font-family:sans-serif; min-width:160px;'>",
+      "<div style='background:#1a1a2e; color:#00d4ff; padding:6px 10px;",
+      " font-size:15px; font-weight:bold; border-radius:4px 4px 0 0;'>",
+      "🏙️ ", name,
+      "</div>",
+      "<div style='background:#16213e; color:#c9d1d9; padding:8px 10px;",
+      " border-radius:0 0 4px 4px; line-height:1.8;'>",
+      "🌍 <b>País:</b> ", country.etc, "<br>",
+      "👥 <b>Población:</b> ", format(pop, big.mark = ".", scientific = FALSE),
+      "</div></div>"
+    ),
+    label = ~paste0(name, " - ", format(pop, big.mark = ".", scientific = FALSE), " hab.")
+  ) |>
+  addLegend(
+    position = "bottomright",
+    pal      = pal2,
+    values   = ~log10(pop),
+    title    = "Población (log₁₀)",
+    labFormat = labelFormat(
+      transform = function(x) round(10^x / 1e6, 1),
+      suffix    = " M"
+    ),
+    opacity = 0.9
+  )
+```

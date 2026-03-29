@@ -1,5 +1,12 @@
 project:
   title: "my_mybinder_01"
+  
+
+embed-resources: true
+
+highlight-style: monochrome
+
+link-external-newwindow: true
 
 
 

@@ -9,5 +9,10 @@ pak::pkg_install(c(
   "knitr",
   "rmarkdown",
   "jsonlite",
-  "languageserver"
+  "languageserver",
+  "DT",
+  "plotly",
+  "ggplotly",
+  "leaflet",
+  "gapminder"
 ))

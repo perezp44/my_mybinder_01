@@ -1,3 +1,0 @@
-#- has de dar permisos de ejecucion al fichero postBuild. En la Terminal:
-
-chmod +x postBuild
