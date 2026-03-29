@@ -12,7 +12,6 @@ pak::pkg_install(c(
   "languageserver",
   "DT",
   "plotly",
-  "ggplotly",
   "leaflet",
   "gapminder"
 ))
