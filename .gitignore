@@ -4,7 +4,7 @@
 .RData
 .Ruserdata
 *.Rproj
-
+.Rproj.user/
 # --- Quarto y Renderizado ---
 # Esta carpeta contiene los archivos temporales del renderizado. 
 # Es mejor que MyBinder la genere de cero.
