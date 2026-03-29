@@ -13,5 +13,6 @@ pak::pkg_install(c(
   "DT",
   "plotly",
   "leaflet",
-  "gapminder"
+  "gapminder",
+  "maps"
 ))

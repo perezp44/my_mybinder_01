@@ -1,0 +1,13 @@
+---
+title: "Mi primer documento con Quarto"
+format: html #- typst, pdf, odt, revealjs, beamer, epub, html
+---
+
+## Diferentes formatos de salida
+
+Quarto permite generar documentos en varios formatos, como HTML, PDF, ODT, Reveal.js, Beamer, EPUB, Markdown y Jupyter. Puedes obtener más información sobre Quarto, [aquí](https://quarto.org)
+
+
+```{r}
+plot(mtcars)
+```
